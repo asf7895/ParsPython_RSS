@@ -1,0 +1,16 @@
+<h1> Список категорий </h1>
+
+{% if list1 %}
+
+<form method="POST" action="/app1/categ1/">
+  {% for elems in list1 %}
+    <input type="radio" name="categ1" value="{{ elems.category }}"> {{ elems.category }}<br>
+  {% endfor %}
+  <button type="submit">Выбрать</button>
+</form>
+
+{% else %}
+    <p>No elems are available.</p>
+{% endif %}
+
+

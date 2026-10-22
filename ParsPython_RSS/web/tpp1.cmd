@@ -1,0 +1,1 @@
+C:\Python314\python D:\PythonProj\django29\pr1\manage.py runserver

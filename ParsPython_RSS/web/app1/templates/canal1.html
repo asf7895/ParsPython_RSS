@@ -1,0 +1,16 @@
+<h1> Список каналов </h1>
+
+{% if list1 %}
+
+<form method="POST" action="/app1/canal1/">
+  {% for elems in list1 %}
+    <input type="radio" name="canal1" value="{{ elems.canal }}"> {{ elems.canal }}<br>
+  {% endfor %}
+  <button type="submit">Выбрать</button>
+</form>
+
+{% else %}
+    <p>No elems are available.</p>
+{% endif %}
+
+

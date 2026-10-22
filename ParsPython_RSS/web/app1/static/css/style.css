@@ -1,0 +1,26 @@
+body {
+  padding: 50px;
+  font: 16px "Helvetica Neue", Helvetica, Arial;
+}
+a {
+  color: brown;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+h1 {
+  font: 32px "Helvetica Neue", Helvetica, Arial;
+  color: brown;
+}
+
+.razuz1 {color:brown
+}
+
+.razuz2 {border-color:black; background-color: yellow 
+}
+
+.razuz3 {border-color:brown; background-color: gold 
+}
+
+

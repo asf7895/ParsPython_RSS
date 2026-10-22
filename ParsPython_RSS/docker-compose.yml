@@ -1,0 +1,46 @@
+version: '3.3'
+
+services:
+  web:
+    build: .
+    #dockerfile: Dockerfile
+    container_name: web
+    command: bash -c "pip install -q -r requirements.txt &&
+                      python web/manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+    ports:
+      - '8000:8000'
+    env_file:
+      - .env
+    depends_on:
+        db:
+            condition: service_healthy
+    links:
+        - db
+
+  db:
+    image: mysql:8.0.44
+    container_name: db_mysql_container
+    environment:
+      #MYSQL_DATABASE: $DB_NAME
+      #MYSQL_USER: $DB_USER
+      #MYSQL_PASSWORD: $DB_PASSWORD
+      #MYSQL_ROOT_PASSWORD: $DB_ROOT_PASSWORD
+      MYSQL_DATABASE: 'exmp2'
+      MYSQL_USER: 'asf'
+      MYSQL_PASSWORD: 'asf78tgh'
+      MYSQL_ROOT_PASSWORD: 'Fghty342'
+    command: ["--log_bin_trust_function_creators=1"]
+    ports:
+      - '3306:3306'
+    env_file:
+      - .env
+    expose:
+      - '3306'
+    healthcheck:
+        test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+        timeout: 5s
+        retries: 160
+
+

@@ -1,0 +1,40 @@
+<h1> Список новостей </h1>
+
+{% if list1 %}
+
+{% for elems in list1 %}
+      {{ elems.title }}<br>
+      {{ elems.link }}<br>
+      {{ elems.published }}<br>
+      {{ elems.descr }}<br>
+      {{ elems.category }}<br>
+      <br>
+{% endfor %} 
+</table>
+
+{% else %}
+    <p>No elems are available.</p>
+{% endif %}
+
+
+<h2>Страница {{ page1 }} </h2>
+
+{% with nextpage=page1|add:"1" %}
+{% with strpg=nextpage|stringformat:"s"  %}
+{% with url11="http://localhost:8000/app1/news1/"|add:strpg %}
+ <a href={{ url11 }}> Следующая страница </a>
+{% endwith %}
+{% endwith %}
+{% endwith %}
+
+{% with prevpage=page1|add:"-1" %}
+{% with strpg=prevpage|stringformat:"s"  %}
+{% with url11="http://localhost:8000/app1/news1/"|add:strpg %}
+ <a href={{ url11 }}> Предыдущая страница </a>
+{% endwith %}
+{% endwith %}
+{% endwith %}
+
+{% with url11="http://localhost:8000/app1/news1/1" %}
+ <a href={{ url11 }}> Первая страница </a><br><br />
+{% endwith %}
